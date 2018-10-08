@@ -1,0 +1,76 @@
+# -*- coding: utf-8 -*-
+#:import hex kivy.utils.get_color_from_hex
+#:import ListItemButton kivy.uix.listview.ListItemButton
+#:import ListAdapter kivy.adapters.listadapter.ListAdapter
+
+<ListItemButton>:
+
+    selected_color: hex('#2ca539')
+    deselected_color: hex('#2ca539')
+    font_size: '20sp'
+    size: (100, '48dp')
+
+<TelaHome>:
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'fundo.jpg'
+                size: self.size
+
+        Image:
+            size_hint: .5, .2
+            source: 'logo.png'
+            pos_hint: {'center_x': .5, 'center_y': .90}
+
+
+        Label:
+            id: nome_usuario
+            text: "-"
+            pos_hint: {'center_x': .5, 'center_y': .73}
+            font_size: '40sp'
+            color: hex('#545454')
+
+
+        BoxLayout:
+            size_hint: .95, .5
+            pos_hint: {'center_x': .5, 'center_y': .42}
+
+            canvas:
+                Color:
+                    rgb: hex('#baffc1')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            ListView:
+                id: list
+
+                adapter:
+                    ListAdapter(
+
+                    data=['Clique abaixo para atualizar'],
+                    selection_mode='none',
+                    cls=ListItemButton)
+
+        Button:
+            size_hint: .75, .12
+            pos_hint: {'center_x': .4, 'center_y': .1}
+            text: 'Atualizar'
+            font_size: '30sp'
+            on_press:
+                root.atualizar_dados()
+            background_color: hex('#2ca539')
+
+        Button:
+            size_hint: .20, .12
+            pos_hint: {'center_x': .875, 'center_y': .1}
+            text: 'Sair'
+            font_size: '30sp'
+            on_press:
+                root.sair()
+            background_color: hex('#bc2b2b')
+
+
