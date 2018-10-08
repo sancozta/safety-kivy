@@ -1,0 +1,148 @@
+# -*- coding: utf-8 -*-
+#:import hex kivy.utils.get_color_from_hex
+#:import C kivy.utils.get_color_from_hex
+
+<TelaLogin>:
+
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                source: 'fundo.jpg'
+                size: self.size
+
+        Image:
+            size_hint: .7, .3
+            source: 'logo.png'
+            pos_hint: {'center_x': .5, 'center_y': .85}
+
+
+
+        FloatLayout:
+            size_hint: .95, .5
+            pos_hint: {'center_x': .5, 'center_y': .42}
+
+            canvas:
+                Color:
+                    rgb: hex('#baffc1')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Label:
+                id: msg
+                text: ''
+                font_size: '18sp'
+                size_hint: .97, .20
+                pos_hint: {'center_x': .5, 'center_y': .40}
+                color: hex('#bc2b2b')
+
+
+            TextInput:
+                id: ti_email
+                text: 'uniceub@gmail.com'
+                font_size: '25sp'
+                size_hint: .80, .15
+                pos_hint: {'center_x': .5, 'center_y': .80}
+                multiline: False
+                hint_text: "Digite seu E-mail"
+
+
+                #arredodar--------------------------------------------------
+                background_normal: 'white.png'
+                background_active: 'white.png'
+                background_color: C('#eaffe5')
+                cursor_color: C('#114206')
+                canvas.before:
+                    Color:
+                        rgba: C('#114206')
+
+                canvas.after:
+
+                    Color:
+                        rgb: C('#eaffe5')
+                    Ellipse:
+                        angle_start:180
+                        angle_end:360
+                        pos:(self.pos[0] - self.size[1]/2.0, self.pos[1])
+                        size: (self.size[1], self.size[1])
+                    Ellipse:
+                        angle_start:360
+                        angle_end:540
+                        pos: (self.size[0] + self.pos[0] - self.size[1]/2.0, self.pos[1])
+                        size: (self.size[1], self.size[1])
+                    Color:
+                        rgba: C('##198700')
+                    Line:
+                        points: self.pos[0] , self.pos[1], self.pos[0] + self.size[0], self.pos[1]
+                    Line:
+                        points: self.pos[0], self.pos[1] + self.size[1], self.pos[0] + self.size[0], self.pos[1] + self.size[1]
+                    Line:
+                        ellipse: self.pos[0] - self.size[1]/2.0, self.pos[1], self.size[1], self.size[1], 180, 360
+                    Line:
+                        ellipse: self.size[0] + self.pos[0] - self.size[1]/2.0, self.pos[1], self.size[1], self.size[1], 360, 540
+
+            TextInput:
+                id: ti_senha
+                text: '123456'
+                font_size: '25sp'
+                size_hint: .80, .15
+                pos_hint: {'center_x': .5, 'center_y': .55}
+                multiline: False
+                hint_text: "Digite sua senha"
+                password: True
+
+                #arredodar--------------------------------------------------
+                background_normal: 'white.png'
+                background_active: 'white.png'
+                background_color: C('#eaffe5')
+                cursor_color: C('#114206')
+                canvas.before:
+                    Color:
+                        rgba: C('#114206')
+
+                canvas.after:
+
+                    Color:
+                        rgb: C('#eaffe5')
+                    Ellipse:
+                        angle_start:180
+                        angle_end:360
+                        pos:(self.pos[0] - self.size[1]/2.0, self.pos[1])
+                        size: (self.size[1], self.size[1])
+                    Ellipse:
+                        angle_start:360
+                        angle_end:540
+                        pos: (self.size[0] + self.pos[0] - self.size[1]/2.0, self.pos[1])
+                        size: (self.size[1], self.size[1])
+                    Color:
+                        rgba: C('##198700')
+                    Line:
+                        points: self.pos[0] , self.pos[1], self.pos[0] + self.size[0], self.pos[1]
+                    Line:
+                        points: self.pos[0], self.pos[1] + self.size[1], self.pos[0] + self.size[0], self.pos[1] + self.size[1]
+                    Line:
+                        ellipse: self.pos[0] - self.size[1]/2.0, self.pos[1], self.size[1], self.size[1], 180, 360
+                    Line:
+                        ellipse: self.size[0] + self.pos[0] - self.size[1]/2.0, self.pos[1], self.size[1], self.size[1], 360, 540
+
+
+
+            Button:
+                id: bt_login
+                size_hint: .65, .25
+                pos_hint: {'center_x': .5, 'center_y': .22}
+                text: 'Login'
+                font_size: '30sp'
+                on_press:
+                color: hex('#ffffff')
+                background_color: hex('#2ca539')
+                #border: 50,50,50,50
+                on_press:
+                    root.logar()
+
+
+
+
