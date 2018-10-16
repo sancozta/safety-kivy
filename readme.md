@@ -1,4 +1,4 @@
-### Safety
+### Safetykivy
 
 Recomenda-se utilizar um terminal bash para facilitar o desenvolvimeto e criação do ambiente local.
 
