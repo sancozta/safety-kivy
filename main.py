@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from manager import manager
+import manager
 from kivy.app import App
 import kivy
 

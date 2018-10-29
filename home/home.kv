@@ -46,12 +46,23 @@
                 adapter:    ListAdapter( data=["Clique abaixo para atualizar"], selection_mode="none", cls=ListItemButton )
 
         Button:
-            size_hint:          (.75, .12)
-            pos_hint:           {"center_x": .40, "center_y": .10}
+            id:                 atualizar
+            size_hint:          (.55, .12)
+            pos_hint:           {"center_x": .30, "center_y": .10}
             text:               "Atualizar"
             font_size:          "30sp"
             on_press:           root.atualizarDados()
-            background_color:   hex("#2ca539")
+            background_color:   hex("#2980B9")
+
+        Button:
+            id:                 flag
+            size_hint:          (.20, .12)
+            pos_hint:           {"center_x": .675, "center_y": .10}
+            text:               "..."
+            font_size:          "30sp"
+            on_press:           root.atualizarFlag()
+            background_color:   (1.0, 1.0, 1.0, 1.0)
+            disabled:            True
 
         Button:
             size_hint:          (.20, .12)
@@ -59,4 +70,4 @@
             text:               "Sair"
             font_size:          "30sp"
             on_press:           root.sair()
-            background_color:   hex("#bc2b2b")
+            background_color:   (1.0, 1.0, 1.0, 1.0)
