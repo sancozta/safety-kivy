@@ -3,7 +3,7 @@ from threading import Thread
 from kivy.uix.screenmanager import Screen
 from api import api
 from home import home
-from manager import manager
+import manager
 
 # SALVAR DADOS DO USUARIO
 DadosUsuario = []
