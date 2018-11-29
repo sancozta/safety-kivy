@@ -4,10 +4,9 @@ from kivy.uix.screenmanager import Screen
 from api import api
 import manager
 
-
 idUser      = []
 nomeUser    = []
-flag    = []
+flag        = []
 
 class TelaHome(Screen):
 
@@ -18,7 +17,7 @@ class TelaHome(Screen):
         self.ids["list"].adapter.data = ["Clique abaixo para atualizar"]
         self.ids["name"].text = "-"
         self.ids["flag"].disabled = True
-        self.ids["flag"].text = '...'
+        self.ids["flag"].text = "..."
         # RETORNA PARA TELA DE LOGIN
         manager.alterarTelaAtual(tela="TelaLogin", direcao="right")
 
@@ -50,17 +49,17 @@ class TelaHome(Screen):
 
 
         if str(flag) != "1":
-            self.ids["flag"].text = 'ON'
+            self.ids["flag"].text = "ON"
             self.ids["flag"].background_color=(.3, .9, .3, 1.0)
 
         else:
-            self.ids["flag"].text = 'OFF'
+            self.ids["flag"].text = "OFF"
             self.ids["flag"].background_color = (1, .1, .1, 1.0)
 
 
         self.ids["flag"].disabled = False
         self.ids["atualizar"].disabled = False
-        self.ids["atualizar"].text = 'Atualizar'
+        self.ids["atualizar"].text = "Atualizar"
         for i in dadosUsuario:
             self.ids["list"].adapter.data.append(i["registry"])
 
@@ -71,37 +70,29 @@ class TelaHome(Screen):
         self.ids["list"].adapter.data.append("Atualizando ...")
 
         self.ids["atualizar"].disabled = True
-        self.ids["atualizar"].text = 'Atualizando ...'
+        self.ids["atualizar"].text = "Atualizando ..."
 
         Thread(target=self.carregar).start()
 
-        # ATUALIZAR DADOS DE LOGS
-
-
-
-
-
-
+    
+    # AJUSTE DE FLAG
     def flag(self):
+
         global idUser
         global nomeUser
         global flag
-        textoBotao = self.ids["flag"].text
 
-        novaFlag = "1" if textoBotao == 'ON' else "0"
-
+        textoBotao  = self.ids["flag"].text
+        novaFlag    = "1" if textoBotao == "ON" else "0"
 
         try:
-            if (api.updateFlag(idUser, novaFlag)['message']=='Update Flag Sucess'):
-
+            if (api.updateFlag(idUser, novaFlag)["message"]=="Update Flag Sucess"):
                 if str(novaFlag) != "1":
-                    self.ids["flag"].text = 'ON'
+                    self.ids["flag"].text = "ON"
                     self.ids["flag"].background_color = (.3, .9, .3, 1.0)
-
                 else:
-                    self.ids["flag"].text = 'OFF'
+                    self.ids["flag"].text = "OFF"
                     self.ids["flag"].background_color = (1, .1, .1, 1.0)
-
             else:
                 self.ids["flag"].text = "OFF"
         except:
@@ -114,5 +105,5 @@ class TelaHome(Screen):
         Thread(target=self.flag).start()
 
 # CARREGAR DADOS
-def carregarDados(dados):
-    TelaHome.setUsuario(TelaHome(), dados)
+def carregarDados(data):
+    TelaHome.setUsuario(TelaHome(), data)
